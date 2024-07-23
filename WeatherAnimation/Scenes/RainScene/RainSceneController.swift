@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class RainSceneController: BaseSceneController {
+class RainSceneController: SKScene {
   var emitter: SKEmitterNode?
 
   var emitterSpeed: CGFloat = -200 {
@@ -22,26 +22,31 @@ class RainSceneController: BaseSceneController {
       emitter?.particleBirthRate = emmitterBirthrate
     }
   }
-  override func createScene(scene: SKScene) {
-    super.createScene(scene: scene)
 
-    newRainNode(scene: scene)
+  func newRainNode() {
+    emitter = SKEmitterNode(fileNamed: "RainParticle")
+    guard let emitter else { return }
+    emitter.position.y = size.height
+
+    addChild(emitter)
   }
 
-  func newRainNode(scene: SKScene) {
-    guard let emitter = SKEmitterNode(fileNamed: "RainScene.sks") else { return }
-    emitter.childNode(withName: "rainEmitter")
+  override func didMove(to view: SKView) {
+    self.backgroundColor = .darkBlue
+    newRainNode()
+  }
+}
+
+extension RainSceneController: Animatable {
+  func startAnimation() {
+    emitterSpeed = 700
+    emmitterBirthrate = 200
   }
 
-  override func startAnimation() {
-    super.startAnimation()
-    emitterSpeed = 500
-    emmitterBirthrate = 300
-  }
-
-  override func stopAnimation() {
-    super.stopAnimation()
+  func stopAnimation() {
     emitterSpeed = 0
     emmitterBirthrate = 0
   }
 }
+
+

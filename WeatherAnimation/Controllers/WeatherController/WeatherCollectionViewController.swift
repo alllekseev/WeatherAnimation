@@ -64,20 +64,35 @@ final class WeatherCollectionViewController: UICollectionViewController {
     collectionView.collectionViewLayout = configureLayout()
 
 
-    for weather in WeatherConditions.allCases {
-      weatherConditions.append(
-        Weather(name: weather.rawValue, iconName: weather.iconName)
+//    for weather in WeatherConditions.allCases {
+//      weatherConditions.append(
+//        Weather(name: weather.rawValue, iconName: weather.iconName, scene: weather)
+//      )
+//      weatherConditions.append(
+//        Weather(name: weather.rawValue, iconName: weather.iconName, scene: weather)
+//      )
+//    }
+
+    weatherConditions.append(
+      Weather(
+        name: WeatherConditions.rain.rawValue,
+        iconName: WeatherConditions.rain.iconName,
+        scene: WeatherConditions.rain
       )
-      weatherConditions.append(
-        Weather(name: weather.rawValue, iconName: weather.iconName)
+    )
+    weatherConditions.append(
+      Weather(
+        name: WeatherConditions.snow.rawValue,
+        iconName: WeatherConditions.snow.iconName,
+        scene: WeatherConditions.snow
       )
-    }
+    )
 
     dataSource.apply(snapshot, animatingDifferences: false)
   }
 
   private func getBackgroundView(for condition: Weather) {
-    backgroundView.configure(for: condition)
+    backgroundView.selectScene(for: condition.scene)
   }
 
   // MARK: - Override Methods

@@ -12,4 +12,5 @@ struct Weather: Hashable {
 
   let name: String
   let iconName: String
+  let scene: WeatherConditions
 }

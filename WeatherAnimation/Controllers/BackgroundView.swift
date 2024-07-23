@@ -11,50 +11,57 @@ import SpriteKit
 final class BackgroundView: UIView {
 
   var previousColor: CGColor?
+  var previousScene: Animatable?
 
-  lazy var skSceneView = SKView(frame: bounds)
+  lazy var skSceneView = SKView(frame: frame)
 
   override init(frame: CGRect) {
     super.init(frame: frame)
 
+    setupView()
     configureConstraints()
-    selectScene()
+    configureAppearance()
+    configureScenes()
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(for condition: Weather) {
+  private var conditions = [WeatherConditions: Animatable]()
 
-//    let gradient = CAGradientLayer()
-//
-//    gradient.frame = bounds
-//    gradient.colors = [UIColor.darkBlue.cgColor, UIColor.lightBlue.cgColor]
-//
-//    layer.insertSublayer(gradient, at: 0)
-
-//    selectScene()
+  private func configureScenes() {
+    for condition in WeatherConditions.allCases {
+      switch condition {
+      case .rain: conditions[.rain] = RainSceneController(size: skSceneView.bounds.size)
+      case .snow: conditions[.snow] = SnowSceneController(size: skSceneView.bounds.size)
+      default: continue
+      }
+    }
   }
 
-  private func selectScene() {
-    guard let scene = RainSceneController(fileNamed: "RainScene.sks") else { return }
-    scene.size = bounds.size
-    scene.stopAnimation()
+  func selectScene(for weatherCondition: WeatherConditions) {
+    previousScene?.stopAnimation()
+
+    guard let scene = conditions[weatherCondition] else { return }
+
+    skSceneView.presentScene(scene, transition: .crossFade(withDuration: 0.4))
     scene.startAnimation()
-    skSceneView.presentScene(scene)
+    previousScene = scene
+  }
+}
 
-//    if let scene {
-//      skSceneView.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
-//    }
+extension BackgroundView: ConfigurableView {
+  func configureAppearance() { }
+  
 
-
-    skSceneView.showsFPS = true
-    skSceneView.showsNodeCount = true
+  func setupView() {
+    let gradientLayer = CAGradientLayer.gradient(in: frame)
+    layer.addSublayer(gradientLayer)
+    setupSubview(skSceneView)
   }
 
   func configureConstraints() {
-    setupSubview(skSceneView)
 
     NSLayoutConstraint.activate([
       skSceneView.topAnchor.constraint(equalTo: topAnchor),
@@ -64,5 +71,4 @@ final class BackgroundView: UIView {
     ])
   }
 }
-
 
