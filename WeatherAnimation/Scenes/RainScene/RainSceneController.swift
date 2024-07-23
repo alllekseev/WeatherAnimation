@@ -22,9 +22,15 @@ class RainSceneController: BaseSceneController {
       emitter?.particleBirthRate = emmitterBirthrate
     }
   }
-  override func createScene() {
-    super.createScene()
-    emitter = childNode(withName: "rainEmitter") as? SKEmitterNode
+  override func createScene(scene: SKScene) {
+    super.createScene(scene: scene)
+
+    newRainNode(scene: scene)
+  }
+
+  func newRainNode(scene: SKScene) {
+    guard let emitter = SKEmitterNode(fileNamed: "RainScene.sks") else { return }
+    emitter.childNode(withName: "rainEmitter")
   }
 
   override func startAnimation() {

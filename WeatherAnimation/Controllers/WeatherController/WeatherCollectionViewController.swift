@@ -30,7 +30,7 @@ final class WeatherCollectionViewController: UICollectionViewController {
 
   // MARK: - Additional Views
 
-  private lazy var backgroundView = BackgroundView(frame: view.bounds)
+  private var backgroundView: BackgroundView!
 
   // MARK: - viewDidLoad
 
@@ -43,6 +43,7 @@ final class WeatherCollectionViewController: UICollectionViewController {
     )
 
     collectionView.alwaysBounceVertical = false
+    backgroundView = BackgroundView(frame: view.bounds)
     configureCollectionView()
   }
 
@@ -50,6 +51,7 @@ final class WeatherCollectionViewController: UICollectionViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     selectRandomCell()
+//    backgroundView = BackgroundView(frame: view.bounds)
   }
 
   // MARK: - configureCollectionView

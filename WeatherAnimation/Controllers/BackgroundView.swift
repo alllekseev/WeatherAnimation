@@ -38,13 +38,15 @@ final class BackgroundView: UIView {
   }
 
   private func selectScene() {
-    let scene = RainSceneController(fileNamed: "RainScene.sks")
-    scene?.stopAnimation()
-    scene?.startAnimation()
+    guard let scene = RainSceneController(fileNamed: "RainScene.sks") else { return }
+    scene.size = bounds.size
+    scene.stopAnimation()
+    scene.startAnimation()
+    skSceneView.presentScene(scene)
 
-    if let scene {
-      skSceneView.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
-    }
+//    if let scene {
+//      skSceneView.presentScene(scene, transition: SKTransition.fade(withDuration: 0.5))
+//    }
 
 
     skSceneView.showsFPS = true
