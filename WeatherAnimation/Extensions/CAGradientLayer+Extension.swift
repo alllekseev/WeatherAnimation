@@ -8,13 +8,13 @@
 import UIKit
 
 extension CAGradientLayer {
-  static func gradient(in frame: CGRect) -> Self {
+  static func gradient(
+    with colors: [UIColor],
+    in frame: CGRect
+  ) -> Self {
     let layer = Self()
 
-    let darkBlue = UIColor.darkBlue.cgColor
-    let lightBlue = UIColor.lightBlue.cgColor
-
-    layer.colors = [darkBlue, lightBlue]
+    layer.colors = colors.map { $0.cgColor }
     layer.frame = frame
     
     return layer

@@ -75,6 +75,13 @@ final class WeatherCollectionViewController: UICollectionViewController {
 
     weatherConditions.append(
       Weather(
+        name: WeatherConditions.sunny.rawValue,
+        iconName: WeatherConditions.sunny.iconName,
+        scene: WeatherConditions.sunny
+      )
+    )
+    weatherConditions.append(
+      Weather(
         name: WeatherConditions.rain.rawValue,
         iconName: WeatherConditions.rain.iconName,
         scene: WeatherConditions.rain

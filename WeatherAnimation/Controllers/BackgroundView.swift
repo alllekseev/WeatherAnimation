@@ -33,6 +33,7 @@ final class BackgroundView: UIView {
   private func configureScenes() {
     for condition in WeatherConditions.allCases {
       switch condition {
+      case .sunny: conditions[.sunny] = SunnySceneController(size: skSceneView.bounds.size)
       case .rain: conditions[.rain] = RainSceneController(size: skSceneView.bounds.size)
       case .snow: conditions[.snow] = SnowSceneController(size: skSceneView.bounds.size)
       default: continue
@@ -56,7 +57,8 @@ extension BackgroundView: ConfigurableView {
   
 
   func setupView() {
-    let gradientLayer = CAGradientLayer.gradient(in: frame)
+    let colors: [UIColor] = [.darkBlue, .lightBlue]
+    let gradientLayer = CAGradientLayer.gradient(with: colors, in: frame)
     layer.addSublayer(gradientLayer)
     setupSubview(skSceneView)
   }

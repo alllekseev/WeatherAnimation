@@ -17,9 +17,9 @@ class RainSceneController: SKScene {
     }
   }
 
-  var emmitterBirthrate: CGFloat = 400 {
+  var emmitterBirthRate: CGFloat = 400 {
     didSet {
-      emitter?.particleBirthRate = emmitterBirthrate
+      emitter?.particleBirthRate = emmitterBirthRate
     }
   }
 
@@ -40,12 +40,12 @@ class RainSceneController: SKScene {
 extension RainSceneController: Animatable {
   func startAnimation() {
     emitterSpeed = 700
-    emmitterBirthrate = 200
+    emmitterBirthRate = 200
   }
 
   func stopAnimation() {
     emitterSpeed = 0
-    emmitterBirthrate = 0
+    emmitterBirthRate = 0
   }
 }
 

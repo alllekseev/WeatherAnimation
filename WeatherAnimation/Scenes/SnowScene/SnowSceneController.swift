@@ -11,13 +11,13 @@ final class SnowSceneController: SKScene {
 
   private var emitter: SKEmitterNode?
 
-  private var emitterSpeed: CGFloat = 0 {
+  private var emitterSpeed: CGFloat = 80 {
     didSet {
       emitter?.particleSpeed = emitterSpeed
     }
   }
 
-  private var emmitterBirthrate: CGFloat = 0 {
+  private var emmitterBirthrate: CGFloat = 40 {
     didSet {
       emitter?.particleBirthRate = emmitterBirthrate
     }
@@ -42,12 +42,14 @@ final class SnowSceneController: SKScene {
 
 extension SnowSceneController: Animatable {
   func startAnimation() {
-    emitterSpeed = 80
-    emmitterBirthrate = 40
+    if emitter == nil {
+      addSnowEmitter()
+    }
   }
 
   func stopAnimation() {
-    emitterSpeed = 0
-    emmitterBirthrate = 0
+    if let emitter {
+      removeChildren(in: [emitter])
+    }
   }
 }

@@ -13,9 +13,9 @@
 		2A4218422C4FD90C00F8D453 /* SnowSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4218412C4FD90C00F8D453 /* SnowSceneController.swift */; };
 		2A4218452C4FF23B00F8D453 /* SnowParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A4218432C4FF23B00F8D453 /* SnowParticle.sks */; };
 		2A4218462C4FF23B00F8D453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A4218442C4FF23B00F8D453 /* Assets.xcassets */; };
+		2A88450F2C504E5C009313D6 /* BokehParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A88450D2C504E5C009313D6 /* BokehParticle.sks */; };
 		2AE026B52C4E8BFE002227FC /* RainSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE026B42C4E8BFE002227FC /* RainSceneController.swift */; };
-		2AE026B92C4EA3D2002227FC /* SunScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2AE026B82C4EA3D2002227FC /* SunScene.sks */; };
-		2AE026BB2C4EA8C2002227FC /* SunSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE026BA2C4EA8C2002227FC /* SunSceneController.swift */; };
+		2AE026BB2C4EA8C2002227FC /* SunnySceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE026BA2C4EA8C2002227FC /* SunnySceneController.swift */; };
 		2AE026C62C4EC99A002227FC /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE026C52C4EC99A002227FC /* ConfigurableView.swift */; };
 		2AE026C92C4ECB55002227FC /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE026C82C4ECB55002227FC /* Weather.swift */; };
 		2AE026CB2C4ECBB9002227FC /* WeatherConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE026CA2C4ECBB9002227FC /* WeatherConditions.swift */; };
@@ -38,9 +38,9 @@
 		2A4218412C4FD90C00F8D453 /* SnowSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowSceneController.swift; sourceTree = "<group>"; };
 		2A4218432C4FF23B00F8D453 /* SnowParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowParticle.sks; sourceTree = "<group>"; };
 		2A4218442C4FF23B00F8D453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A88450D2C504E5C009313D6 /* BokehParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BokehParticle.sks; sourceTree = "<group>"; };
 		2AE026B42C4E8BFE002227FC /* RainSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainSceneController.swift; sourceTree = "<group>"; };
-		2AE026B82C4EA3D2002227FC /* SunScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SunScene.sks; sourceTree = "<group>"; };
-		2AE026BA2C4EA8C2002227FC /* SunSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunSceneController.swift; sourceTree = "<group>"; };
+		2AE026BA2C4EA8C2002227FC /* SunnySceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnySceneController.swift; sourceTree = "<group>"; };
 		2AE026C52C4EC99A002227FC /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		2AE026C82C4ECB55002227FC /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		2AE026CA2C4ECBB9002227FC /* WeatherConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConditions.swift; sourceTree = "<group>"; };
@@ -79,9 +79,17 @@
 			path = SnowScene;
 			sourceTree = "<group>";
 		};
+		2A8845082C504DCC009313D6 /* FogScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FogScene;
+			sourceTree = "<group>";
+		};
 		2AE026B12C4E8AC6002227FC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2A8845082C504DCC009313D6 /* FogScene */,
 				2AE026BD2C4EC841002227FC /* SunnyScene */,
 				2A4218402C4FD8CF00F8D453 /* SnowScene */,
 				2AE026BC2C4EC82C002227FC /* RainScene */,
@@ -101,8 +109,8 @@
 		2AE026BD2C4EC841002227FC /* SunnyScene */ = {
 			isa = PBXGroup;
 			children = (
-				2AE026B82C4EA3D2002227FC /* SunScene.sks */,
-				2AE026BA2C4EA8C2002227FC /* SunSceneController.swift */,
+				2AE026BA2C4EA8C2002227FC /* SunnySceneController.swift */,
+				2A88450D2C504E5C009313D6 /* BokehParticle.sks */,
 			);
 			path = SunnyScene;
 			sourceTree = "<group>";
@@ -270,11 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AE42E972C48D8DA00251651 /* LaunchScreen.storyboard in Resources */,
+				2A88450F2C504E5C009313D6 /* BokehParticle.sks in Resources */,
 				2AE42E942C48D8DA00251651 /* Assets.xcassets in Resources */,
 				2A42183E2C4F95CD00F8D453 /* RainParticle.sks in Resources */,
 				2A4218462C4FF23B00F8D453 /* Assets.xcassets in Resources */,
 				2A4218452C4FF23B00F8D453 /* SnowParticle.sks in Resources */,
-				2AE026B92C4EA3D2002227FC /* SunScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +308,7 @@
 				2AE42E8B2C48D8D900251651 /* AppDelegate.swift in Sources */,
 				2AE42E8D2C48D8D900251651 /* SceneDelegate.swift in Sources */,
 				2A25E2322C4C9F78001FCAFD /* CAGradientLayer+Extension.swift in Sources */,
-				2AE026BB2C4EA8C2002227FC /* SunSceneController.swift in Sources */,
+				2AE026BB2C4EA8C2002227FC /* SunnySceneController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
